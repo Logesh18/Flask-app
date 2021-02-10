@@ -1,0 +1,75 @@
+{% extends "head.html" %}
+
+{%block head%}
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="/{{url}}/?page={{pre}}" tabindex="-1">Previous</a>
+    </li>
+    {%for i in range(1,p+1)%}
+        {%if i == active1%}
+          <li class="page-item  active">
+            <a class="page-link " href="/{{url}}/?page={{i}}">{{i}}</a>
+          </li>
+        {%else%}
+          <li calss="page-item "><a class="page-link " href="/{{url}}/?page={{i}}">{{i}}</a></li>
+        {%endif%}
+    {%endfor%}
+      <a class="page-link" href="/{{url}}/?page={{next}}">Next</a>
+    </li>
+  </ul>
+</nav>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Provider Name</th> 
+        <th scope="col">Receiver Name</th>
+        <th scope="col">Added Date</th>
+        <th scope="col">Updated Date</th>
+        <th scope="col">Content</th>
+      </tr>
+    </thead>
+
+    <tbody>
+       
+        
+       
+        {%for i in l%}
+
+            {%set ind = loop.index0 + start1 + 1%}
+            <tr>
+                <th scope="row">{{ind}}</th>
+                <td><a href= {{i['Provider_Link']}} >{{i['Provider_Name']}} </a></td>
+                <td><a href= {{i['Receiver_Link']}} >{{i['Receiver_Name']}}</a></td>
+                <td>{{i['Added_Date']}}</td>
+                <td>{{i['Updated_Date']}}</td>
+                <td>{{i['Content']}}</td>     
+            <tr>
+           
+        {%endfor%}
+       
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="/{{url}}/?page={{pre}}" tabindex="-1">Previous</a>
+      </li>
+      {%for i in range(1,p+1)%}
+          {%if i == active1%}
+            <li class="page-item  active">
+              <a class="page-link " href="/{{url}}/?page={{i}}">{{i}}</a>
+            </li>
+          {%else%}
+            <li calss="page-item "><a class="page-link " href="/{{url}}/?page={{i}}">{{i}}</a></li>
+          {%endif%}
+      {%endfor%}
+        <a class="page-link" href="/{{url}}/?page={{next}}">Next</a>
+      </li>
+    </ul>
+  </nav>
+ 
+{%endblock%}
